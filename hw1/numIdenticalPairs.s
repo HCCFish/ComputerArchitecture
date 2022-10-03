@@ -1,11 +1,15 @@
 .data
-nums: .word   1,3,2,1,3,3
-len:  .word   6
+nums1: .word   1,3,2,1,3,3
+len1:  .word   6
+nums2: .word   99,2,3,56,0,2,56,99
+len2:  .word   8
+nums3: .word   0,5,6,32,1,0,1,0,0,6,32,0,5,5
+len3:  .word   14
 .text
 
 main:
-    la     s1, nums        # s1 = nums[];  // set s1 as first pointer started from nums[0]
-    lw     s2, len         # s2 = len;     // length of the array
+    la     s1, nums1       # s1 = nums[];  // set s1 as first pointer started from nums[0]
+    lw     s2, len1        # s2 = len;     // length of the array
     li     s3, 0           # s3 = 0;       // count = 0
     slli   s4, s2 ,2       # s4 = len * 4  // find array address length
     add    s4, s1 ,s4      # s4 = nums+len * 4  //end address of the array
@@ -35,5 +39,5 @@ return:
 # --- print ---
 print:
     mv a0, s3
-    li a7, 1
+    li a7, 1               #print the value of a0 as a signed integer
     ecall
